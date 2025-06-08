@@ -1,39 +1,21 @@
-# Build results
+# Build output
 bin/
 obj/
-out/
 
-# User-specific files
-*.rsuser
-*.suo
-*.user
-*.userosscache
-*.sln.docstates
-
-# Visual Studio working folder
+# Visual Studio
 .vs/
-
-# Rider IDE
-.idea/
-
-# ASP.NET Scaffolding
-ScaffoldingReadMe.txt
-
-# Publish folder
-publish/
-wwwroot/lib/
+*.user
+*.suo
 
 # Logs
 *.log
 
-# OS generated files
+# Runtime files
+*.db
+
+# Secrets
+appsettings.Development.json
+
+# OS/system files
 .DS_Store
 Thumbs.db
-
-# Dependency directories
-node_modules/
-bower_components/
-
-# Configuration
-appsettings.Development.json
-secrets.json
