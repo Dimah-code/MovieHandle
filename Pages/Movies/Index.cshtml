@@ -29,7 +29,7 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Movie) {
+        @foreach (var item in Model.Movie) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
@@ -49,6 +49,6 @@
                 <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
-}
+        }
     </tbody>
 </table>

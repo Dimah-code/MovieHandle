@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using MovieHandle.Data;
+using MovieHandle.Models;
 namespace MovieHandle
 {
     public class Program
@@ -9,12 +10,20 @@ namespace MovieHandle
         {
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddDbContext<MovieHandleContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("MovieHandleContext") ?? throw new InvalidOperationException("Connection string 'MovieHandleContext' not found.")));
+                options.UseSqlServer(builder.Configuration.GetConnectionString("MovieHandleContext") 
+                ?? throw new InvalidOperationException("Connection string 'MovieHandleContext' not found.")));
 
             // Add services to the container.
             builder.Services.AddRazorPages();
 
             var app = builder.Build();
+
+            using (var scope = app.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+
+                SeedData.Initialize(services);
+            }
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
